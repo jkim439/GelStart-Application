@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+* {
+	margin-top:0;
+	margin-bottom:0;
+	margin-left:0;
+	margin-right:0;
+}
+
+a, input, img { outline:none; selector-dummy:expression(this.hideFocus=true); }
+
+a:link, a:active, a:visited { text-decoration:none; }
+a:hover { text-decoration:underline; }

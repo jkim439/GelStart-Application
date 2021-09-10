@@ -1,0 +1,41 @@
+################################################################################
+# 
+################################################################################
+
+# PHP 환경설정
+# PHP_FLAG display_errors OFF
+
+# SESSION 환경설정
+PHP_FLAG session.bug_compat_42 OFF
+PHP_FLAG session.bug_compat_warn OFF
+PHP_FLAG session.cookie_httponly ON
+PHP_VALUE session.gc_maxlifetime 3600
+PHP_VALUE session.hash_function 1
+PHP_VALUE session.name SESSIONUNIQUEKEY
+PHP_FLAG session.use_only_cookies ON
+PHP_FLAG session.use_trans_sid OFF
+
+# MYSQL 환경설정
+PHP_VALUE mysql.default_charset UTF8
+
+# 기본 캐릭터셋 지정
+AddDefaultCharset UTF-8
+
+# 리소스 무단접속 차단
+SetEnvIf Referer "http://gelstart.godohosting.com" link_allow1
+<FilesMatch ".\
+(gif|jpg|zip|alz|a00|jpeg|GIF|JPG|ZIP|RAR|ALZ|A00|ACE|mp3|MP3|mpeg|MPEG\
+|wav|WAV|asf|ASF|wmv|WMV|swf|smi|SMI|SWF|exe|EXE|wma|WMA|torrent|TORRENT|js|JS)$">
+Order Deny,Allow
+Deny from all
+Allow from env=link_allow1
+</FilesMatch>
+
+# RewriteEngine On
+# RewriteCond %{REMOTE_ADDR} ^116.125.216. [OR]
+# RewriteRule .* http://www.naver.com/
+
+# 페이지 오류
+ErrorDocument 401 http://gelstart.godohosting.com/beta/error.php?code=0401
+ErrorDocument 403 http://gelstart.godohosting.com/beta/error.php?code=0403
+ErrorDocument 404 http://gelstart.godohosting.com/beta/error.php?code=0404
